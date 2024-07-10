@@ -1,0 +1,8 @@
+[31m2024-07-10 21:21:49 [error] {"name":"JsonWebTokenError","message":"invalid signature"}[39m module=app submodule=getLang method=check app=main reqId=01fa36ee-5c11-4f87-bf6e-ae3894afcbbd dataSourceKey=main
+[31m2024-07-10 21:21:49 [error] {"name":"JsonWebTokenError","message":"invalid signature"}[39m module=pm submodule=listEnabled method=check app=main reqId=97be6961-b3d1-4910-a4ce-4c3bf7fd0026 dataSourceKey=main
+[31m2024-07-10 21:21:50 [error] {"name":"JsonWebTokenError","message":"invalid signature"}[39m module=auth submodule=check method=check app=main reqId=d03a350b-14d2-4d9d-af45-b2ddcd8accb4 dataSourceKey=main
+[31m2024-07-10 21:21:50 [error] {"name":"JsonWebTokenError","message":"invalid signature"}[39m module=systemSettings submodule=get/1 method=check app=main reqId=154c6698-767c-4445-8b93-509e63dbf973 dataSourceKey=main
+[31m2024-07-10 21:21:50 [error] {"name":"JsonWebTokenError","message":"invalid signature"}[39m module=themeConfig submodule=list method=check app=main reqId=281ee5ea-c277-4aba-9fe2-bacc07741e92 dataSourceKey=main
+[31m2024-07-10 21:21:50 [error] {"name":"JsonWebTokenError","message":"invalid signature"}[39m module=app submodule=getInfo method=check app=main reqId=97875e52-9226-4a18-bc97-67f14811836d dataSourceKey=main
+[31m2024-07-10 21:21:50 [error] {"name":"JsonWebTokenError","message":"invalid signature"}[39m module=authenticators submodule=publicList method=check app=main reqId=712c1301-3c47-4ad5-b39a-af416ad8f765 dataSourceKey=main
+[31m2024-07-10 21:22:00 [error] {"name":"JsonWebTokenError","message":"invalid signature"}[39m module=auth submodule=signIn method=check app=main reqId=55eb0783-ab59-4788-a3a5-2582027a151d dataSourceKey=main

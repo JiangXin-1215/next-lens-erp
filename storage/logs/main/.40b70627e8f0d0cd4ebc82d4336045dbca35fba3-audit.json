@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "/Users/jiangxin/dev/apps/next-lens-erp/storage/logs/main/.40b70627e8f0d0cd4ebc82d4336045dbca35fba3-audit.json",
+    "files": [
+        {
+            "date": 1720616209443,
+            "name": "/Users/jiangxin/dev/apps/next-lens-erp/storage/logs/main/system_error_2024-07-10.log",
+            "hash": "b2ee5412ced35fdacda6dd1cc4f13676d366a1981bbce94e78e90ad93ef33d4e"
+        }
+    ],
+    "hashType": "sha256"
+}
