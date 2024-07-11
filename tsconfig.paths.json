@@ -12,6 +12,15 @@
       ],
       "@janexin/lens-grid": [
         "packages/plugins/@janexin/lens-grid/src"
+      ],
+      "@janexin/login-page/client": [
+        "packages/plugins/@janexin/login-page/src/client"
+      ],
+      "@janexin/login-page/package.json": [
+        "packages/plugins/@janexin/login-page/package.json"
+      ],
+      "@janexin/login-page": [
+        "packages/plugins/@janexin/login-page/src"
       ]
     }
   }

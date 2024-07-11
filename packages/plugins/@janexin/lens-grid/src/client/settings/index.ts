@@ -13,6 +13,8 @@ export const gridSettings = new SchemaSettings({
             useComponentProps() {
                 const collection = useCollection();
                 const { t } = useTranslation();
+                const { patch } = useDesignable();
+                const fieldSchema = useFieldSchema();
                 // useEffect(() => {
                 //     setSchema(pageSchema);
                 //     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -22,6 +24,14 @@ export const gridSettings = new SchemaSettings({
                     options: collection.getFields().filter((field) => field.type === 'double').map((field) => {
                         return { label: field.uiSchema?.title || field.name, value: field.name }
                     }),
+                    value: fieldSchema['x-use-component-props']?.XField || 'iCyl' || 'iAdd',
+                    onChange(value) {
+                        patch({
+                            'x-use-component-props': {
+                                XField: value
+                            }
+                        });
+                    },
                 };
             },
         },
@@ -31,6 +41,8 @@ export const gridSettings = new SchemaSettings({
             useComponentProps() {
                 const collection = useCollection();
                 const { t } = useTranslation();
+                const { patch } = useDesignable();
+                const fieldSchema = useFieldSchema();
                 // useEffect(() => {
                 //     setSchema(pageSchema);
                 //     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -40,6 +52,14 @@ export const gridSettings = new SchemaSettings({
                     options: collection.getFields().filter((field) => field.type === 'double').map((field) => {
                         return { label: field.uiSchema?.title || field.name, value: field.name }
                     }),
+                    value: fieldSchema['x-use-component-props']?.XField || 'iSph',
+                    onChange(value) {
+                        patch({
+                            'x-use-component-props': {
+                                YField: value
+                            }
+                        });
+                    },
                 };
             },
         },
@@ -79,7 +99,3 @@ export const gridSettings = new SchemaSettings({
         }
     ]
 })
-
-function useField() {
-    throw new Error("Function not implemented.");
-}
