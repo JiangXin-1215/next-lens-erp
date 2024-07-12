@@ -16,6 +16,11 @@
     "declaration": true,
     "experimentalDecorators": true,
     "downlevelIteration": true,
-    "baseUrl": "."
-  }
+    "baseUrl": ".",
+    "outDir": "dist",
+  },
+  "exclude": [
+    "node_modules",
+    "dist"
+  ],
 }

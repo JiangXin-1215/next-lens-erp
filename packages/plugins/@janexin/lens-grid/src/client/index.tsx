@@ -3,7 +3,7 @@ import { Plugin } from '@nocobase/client';
 import { LensGrid } from './component';
 import { useGridProps } from './schema';
 import { gridSettings } from './settings';
-import { gridInitializerItem } from './initializer';
+import { gridInitializer } from './initializer';
 
 export class LensGridClient extends Plugin {
   async afterAdd() {
@@ -21,11 +21,11 @@ export class LensGridClient extends Plugin {
     this.app.addScopes({ useGridProps });
     this.app.schemaSettingsManager.add(gridSettings);
     //注册到页面block中
-    this.app.schemaInitializerManager.addItem('page:addBlock', `dataBlocks.${gridInitializerItem.name}`, gridInitializerItem);
+    this.app.schemaInitializerManager.addItem('page:addBlock', `dataBlocks.${gridInitializer.name}`, gridInitializer);
     //注册到弹框block中
-    this.app.schemaInitializerManager.addItem('popup:addNew:addBlock', `dataBlocks.${gridInitializerItem.name}`, gridInitializerItem);
+    this.app.schemaInitializerManager.addItem('popup:addNew:addBlock', `dataBlocks.${gridInitializer.name}`, gridInitializer);
     //注册到移动端block中
-    this.app.schemaInitializerManager.addItem('mobilePage:addBlock', `dataBlocks.${gridInitializerItem.name}`, gridInitializerItem);
+    this.app.schemaInitializerManager.addItem('mobilePage:addBlock', `dataBlocks.${gridInitializer.name}`, gridInitializer);
     // this.app.addProvider()
     // this.app.addProviders()
     // this.app.router.add()

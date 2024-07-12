@@ -41,14 +41,13 @@ export interface LensGridRow {
 
 /**
  * 根据给定的参数生成表格的列配置
- * @param xField x轴字段，可以是'iCyl'或者'iAdd'
  * @param align 列对齐方式，可以是'left'、'center'或者'right'，默认为'center'
  * @returns 表格的列配置数组
  */
-export const getColumns = (xField: string, align: 'left' | 'center' | 'right' = 'center'): TableProps<LensGridRow>['columns'] => {
+export const getColumns = (align: 'left' | 'center' | 'right' = 'center'): TableProps<LensGridRow>['columns'] => {
     return [
         {
-            title: xField === 'iCyl' ? 'SPH/CYL' : 'SPH/ADD',
+            title: 'SPH/CYL',
             dataIndex: 'col0',
             align: align,
             fixed: 'left',
@@ -65,6 +64,31 @@ export const getColumns = (xField: string, align: 'left' | 'center' | 'right' = 
     ];
 };
 
+export const fillData = (data: object) => {
+    for (let key in data) {
+        //如果没有isph 或者 icyl 或者 iadd，就终止本次循环
+        if (!data[key].iSph || !data[key].iCyl || !data[key].iAdd) {
+            return;
+        }
+
+        let sph = data[key].iSph;
+        let cyl = data[key].iCyl;
+        let add = data[key].iAdd;
+        let colIndex = 0;
+        let rowIndex = 0;
+        if (add) {
+            colIndex = Math.abs(add) / 0.25 + 1;
+        } else {
+            colIndex = Math.abs(cyl) / 0.25 + 1;
+        }
+        rowIndex = Math.abs(sph) / 0.25;
+
+        let row = dataAll[rowIndex];
+
+        //根据colIndex赋值对应数据
+        dataAll[rowIndex][colIndex] = { id: data[key].id, oValue: data[key].Num, nValue: data[key].Num, hasChanged: false };
+    }
+};
 
 export const dataAll: LensGridRow[] = Array.from({ length: 81 }, (_, i) => ({
     key: (i * 0.25).toFixed(2),
@@ -96,11 +120,3 @@ export const dataAll: LensGridRow[] = Array.from({ length: 81 }, (_, i) => ({
     col25: { id: 0, oValue: "", nValue: "", hasChanged: false },
 }));
 
-
-export const fillData = (data) => {
-    //data类型为object 遍历data
-    console.log(data.data);
-    // for (let i = 0; i < data.length; i++) {
-    //     console.log(data[i]);
-    // }
-};
