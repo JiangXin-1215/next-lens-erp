@@ -1,6 +1,8 @@
 {
     "LensGrid": "镜片表格",
-    "GridXField": "横坐标字段",
-    "GridYField": "纵坐标字段",
-    "ReadOnly": "只读"
+    "LensGrid Settings": "镜片表格设置",
+    "UnitType": "计量单位",
+    "Prs": "副",
+    "Pcs": "片",
+    "QtySum": "合计数量"
 }

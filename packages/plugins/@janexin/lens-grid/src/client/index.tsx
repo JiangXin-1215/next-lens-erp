@@ -1,9 +1,11 @@
 //客户端插件入口文件
 import { Plugin } from '@nocobase/client';
-import { LensGrid } from './component';
+import { LensGrid, SettingManeger } from './component';
 import { useGridProps } from './schema';
 import { gridSettings } from './settings';
 import { gridInitializer } from './initializer';
+import { BlockName } from './constants';
+import { usePluginTranslation } from './locale';
 
 export class LensGridClient extends Plugin {
   async afterAdd() {
@@ -20,6 +22,11 @@ export class LensGridClient extends Plugin {
     //将 useGridProps 注册到系统中，这样 Schema 中x-use-component-props 才能找到对应的 scope。
     this.app.addScopes({ useGridProps });
     this.app.schemaSettingsManager.add(gridSettings);
+    // this.app.pluginSettingsManager.add(BlockName, {
+    //   title: '{{t("LensGrid Settings")}}',
+    //   icon: 'ApiOutlined',
+    //   component: SettingManeger,
+    // });
     //注册到页面block中
     this.app.schemaInitializerManager.addItem('page:addBlock', `dataBlocks.${gridInitializer.name}`, gridInitializer);
     //注册到弹框block中

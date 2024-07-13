@@ -1,3 +1,4 @@
+
 import type { TableProps } from 'antd';
 import React from 'react';
 
@@ -86,7 +87,7 @@ export const fillData = (data: object) => {
         let row = dataAll[rowIndex];
 
         //根据colIndex赋值对应数据
-        dataAll[rowIndex][colIndex] = { id: data[key].id, oValue: data[key].Num, nValue: data[key].Num, hasChanged: false };
+        dataAll[rowIndex][colIndex] = { id: data[key].id, oValue: data[key].num, nValue: data[key].num, hasChanged: false };
     }
 };
 
@@ -100,7 +101,7 @@ export const dataAll: LensGridRow[] = Array.from({ length: 81 }, (_, i) => ({
     col5: { id: 0, oValue: "", nValue: "", hasChanged: false },
     col6: { id: 0, oValue: "", nValue: "", hasChanged: false },
     col7: { id: 0, oValue: "", nValue: "", hasChanged: false },
-    col8: { id: 0, oValue: "", nValue: "", hasChanged: false },
+    col8: { id: 0, oValue: "1", nValue: "1", hasChanged: false },
     col9: { id: 0, oValue: "", nValue: "", hasChanged: false },
     col10: { id: 0, oValue: "", nValue: "", hasChanged: false },
     col11: { id: 0, oValue: "", nValue: "", hasChanged: false },
@@ -119,4 +120,34 @@ export const dataAll: LensGridRow[] = Array.from({ length: 81 }, (_, i) => ({
     col24: { id: 0, oValue: "", nValue: "", hasChanged: false },
     col25: { id: 0, oValue: "", nValue: "", hasChanged: false },
 }));
+
+export const changeData = (unit: number) => {
+    //根据unit的值，修改dataAll中的数据
+    //unit为0时，表示pcs，为1时表示prs
+    //为0时，数量乘以2，为1时，数量除以2
+    dataAll.forEach((row) => {
+        for (let key in row) {
+            if (key === 'key' || key === 'col0') {
+                continue;
+            }
+            if (unit === 0) {
+                if (row[key].oValue != "") {
+                    row[key].oValue = Number(row[key].oValue) * 2;
+                }
+                if (row[key].nValue != "") {
+                    row[key].nValue = Number(row[key].nValue) * 2;
+                }
+
+            } else {
+                if (row[key].oValue != "") {
+                    row[key].oValue = (Number(row[key].oValue) / 2).toFixed(1);
+                }
+                if (row[key].nValue != "") {
+                    row[key].nValue = (Number(row[key].nValue) / 2).toFixed(1);
+                }
+
+            }
+        }
+    });
+}
 

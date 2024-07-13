@@ -1,6 +1,8 @@
 {
     "LensGrid": "Lens Grid",
-    "GridXField": "X Field",
-    "GridYField": "Y Field",
-    "ReadOnly": "Read Only"
+    "LensGrid Settings": "Lens Grid Settings",
+    "UnitType": "Qty Type",
+    "Prs": "Prs",
+    "Pcs": "Pcs",
+    "QtySum": "Qty Sum"
 }
