@@ -47,7 +47,6 @@ export const LensGrid: FC<LensGridProps> = withDynamicSchemaProps(({ data, loadi
         fillData(data);
     }
     const onChange = (e: RadioChangeEvent) => {
-        console.log('radio checked', e.target.value);
         patch(
             {
                 'x-component-props': {

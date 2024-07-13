@@ -66,12 +66,8 @@ export const getColumns = (align: 'left' | 'center' | 'right' = 'center'): Table
 };
 
 export const fillData = (data: object) => {
+    console.log('data:', data);
     for (let key in data) {
-        //如果没有isph 或者 icyl 或者 iadd，就终止本次循环
-        if (!data[key].iSph || !data[key].iCyl || !data[key].iAdd) {
-            return;
-        }
-
         let sph = data[key].iSph;
         let cyl = data[key].iCyl;
         let add = data[key].iAdd;
@@ -84,10 +80,8 @@ export const fillData = (data: object) => {
         }
         rowIndex = Math.abs(sph) / 0.25;
 
-        let row = dataAll[rowIndex];
-
         //根据colIndex赋值对应数据
-        dataAll[rowIndex][colIndex] = { id: data[key].id, oValue: data[key].num, nValue: data[key].num, hasChanged: false };
+        dataAll[rowIndex][`col${colIndex}`] = { id: data[key].id, oValue: data[key].num, nValue: data[key].num, hasChanged: false };
     }
 };
 
@@ -101,7 +95,7 @@ export const dataAll: LensGridRow[] = Array.from({ length: 81 }, (_, i) => ({
     col5: { id: 0, oValue: "", nValue: "", hasChanged: false },
     col6: { id: 0, oValue: "", nValue: "", hasChanged: false },
     col7: { id: 0, oValue: "", nValue: "", hasChanged: false },
-    col8: { id: 0, oValue: "1", nValue: "1", hasChanged: false },
+    col8: { id: 0, oValue: "", nValue: "", hasChanged: false },
     col9: { id: 0, oValue: "", nValue: "", hasChanged: false },
     col10: { id: 0, oValue: "", nValue: "", hasChanged: false },
     col11: { id: 0, oValue: "", nValue: "", hasChanged: false },
