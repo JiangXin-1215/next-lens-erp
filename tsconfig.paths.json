@@ -13,6 +13,15 @@
       "@janexin/lens-grid": [
         "packages/plugins/@janexin/lens-grid/src"
       ],
+      "@janexin/lens-grid-edit/client": [
+        "packages/plugins/@janexin/lens-grid-edit/src/client"
+      ],
+      "@janexin/lens-grid-edit/package.json": [
+        "packages/plugins/@janexin/lens-grid-edit/package.json"
+      ],
+      "@janexin/lens-grid-edit": [
+        "packages/plugins/@janexin/lens-grid-edit/src"
+      ],
       "@janexin/login-page/client": [
         "packages/plugins/@janexin/login-page/src/client"
       ],
