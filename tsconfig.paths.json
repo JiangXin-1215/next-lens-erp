@@ -4,15 +4,6 @@
       "@@/*": [
         ".dumi/tmp/*"
       ],
-      "@janexin/lens-grid/client": [
-        "packages/plugins/@janexin/lens-grid/src/client"
-      ],
-      "@janexin/lens-grid/package.json": [
-        "packages/plugins/@janexin/lens-grid/package.json"
-      ],
-      "@janexin/lens-grid": [
-        "packages/plugins/@janexin/lens-grid/src"
-      ],
       "@janexin/lens-grid-edit/client": [
         "packages/plugins/@janexin/lens-grid-edit/src/client"
       ],
