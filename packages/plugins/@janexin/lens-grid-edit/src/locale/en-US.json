@@ -7,6 +7,8 @@
     "QtySum": "Qty Sum",
     "Export": "Export",
     "Paste": "Paste",
-    "Clear":"Clear",
-    "Sum": "Sum"
+    "Clear": "Clear",
+    "Sum": "Sum",
+    "ReadOnly": "Read Only",
+    "Collection": "Collection"
 }

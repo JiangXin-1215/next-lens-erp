@@ -7,9 +7,16 @@ import { ClearOutlined, FileExcelFilled, FileTextFilled } from '@ant-design/icon
 import { DataGrid } from '@mui/x-data-grid';
 import { usePluginTranslation } from '../locale';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { observer, useField } from '@formily/react';
 
-export const LensGridEdit: FC = withDynamicSchemaProps(
-  () => {
+export interface LensGridEditProps {
+  readOnly?: boolean;
+  collectionName: string;
+}
+
+export const LensGridEdit: FC<LensGridEditProps> = withDynamicSchemaProps(
+  observer((props) => {
+    const { readOnly = false } = props;
     const { t } = usePluginTranslation();
     const { theme } = useGlobalTheme();
     const isDark = theme.name.toUpperCase().search('DARK') !== -1;
@@ -40,7 +47,7 @@ export const LensGridEdit: FC = withDynamicSchemaProps(
             width: 100,
             align: 'center',
             headerAlign: 'center',
-            editable: true,
+            editable: !readOnly,
             renderCell: (params) => {
               if (params.id !== 'total') {
                 var rowid = params.id;
@@ -195,7 +202,7 @@ export const LensGridEdit: FC = withDynamicSchemaProps(
         />
       </div>
     )
-  }, { displayName: BlockName }
+  }), { displayName: BlockName }
 );
 
 
