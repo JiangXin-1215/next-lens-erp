@@ -15,13 +15,13 @@ export const gridEditInitializerItem: SchemaInitializerItemType = {
     const { t } = usePluginTranslation();
 
     return {
-        title: t(BlockName),
-        icon: <TableOutlined />,
-        componentType: BlockName,
-        useTranslationHooks: usePluginTranslation,
-        onClick: () => {
-            insert(lensGridEditSchema);
-          },
+      title: t(BlockName),
+      icon: <TableOutlined />,
+      componentType: BlockName,
+      useTranslationHooks: usePluginTranslation,
+      onClick: () => {
+        insert(lensGridEditSchema);
+      },
     };
   },
 }

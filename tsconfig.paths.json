@@ -13,6 +13,15 @@
       "@janexin/lens-grid-edit": [
         "packages/plugins/@janexin/lens-grid-edit/src"
       ],
+      "@janexin/lenserp-frame-form/client": [
+        "packages/plugins/@janexin/lenserp-frame-form/src/client"
+      ],
+      "@janexin/lenserp-frame-form/package.json": [
+        "packages/plugins/@janexin/lenserp-frame-form/package.json"
+      ],
+      "@janexin/lenserp-frame-form": [
+        "packages/plugins/@janexin/lenserp-frame-form/src"
+      ],
       "@janexin/login-page/client": [
         "packages/plugins/@janexin/login-page/src/client"
       ],

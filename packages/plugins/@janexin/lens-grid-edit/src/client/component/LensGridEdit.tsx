@@ -1,9 +1,9 @@
-import React, { FC, useState, useEffect, useRef, useContext } from 'react';
-import { useAPIClient, withDynamicSchemaProps, useGlobalTheme } from '@nocobase/client'
+import React, { FC, useState, useEffect, useRef, useContext, useMemo } from 'react';
+import { useAPIClient, withDynamicSchemaProps, useGlobalTheme, useApp } from '@nocobase/client'
 import { changeData, defaultSource, LensGridRow, defaultRows, exportExcel, addTotalRow } from './LensGridEditData';
 import { BlockName } from '../constants';
 import { Radio, Button, message, RadioChangeEvent, Tooltip } from "antd";
-import { ClearOutlined, FileExcelFilled, FileTextFilled } from '@ant-design/icons';
+import { ClearOutlined, ExportOutlined } from '@ant-design/icons';
 import { DataGrid } from '@mui/x-data-grid';
 import { usePluginTranslation } from '../locale';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
@@ -16,18 +16,19 @@ export interface LensGridEditProps {
 
 export const LensGridEdit: FC<LensGridEditProps> = withDynamicSchemaProps(
   observer((props) => {
+    const app = useApp();
     const { readOnly = false } = props;
     const { t } = usePluginTranslation();
     const { theme } = useGlobalTheme();
     const isDark = theme.name.toUpperCase().search('DARK') !== -1;
-    const httpClient = useAPIClient();
-    // httpClient.request
     const [messageApi, contextHolder] = message.useMessage();
     const [qtyType, setQtyType] = useState(1) // 计量单位  1  片PCS 2  副PRS
+    const [signMark, setSignMark] = useState(1) // 符号  1  -/-近视  2 +/-老花
     const [sourceData, setSourceData] = useState(defaultSource) // 后台数据，不包含合计行
     const [sourceRows, setSourceRows] = useState(defaultRows) // 表格数据，不包含合计行 
     const [totalRows, setTotalRows] = useState([]) // 表格数据包含合计行
     const [totalNum, setTotalNum] = useState(0) // 合计数量
+
     const getColumns = (): any[] => {
       return [
         {
@@ -88,10 +89,15 @@ export const LensGridEdit: FC<LensGridEditProps> = withDynamicSchemaProps(
     const columns = getColumns();
 
     //变更计量单位
-    const onChange = (e: RadioChangeEvent) => {
+    const onChangeUnit = (e: RadioChangeEvent) => {
       setQtyType(e.target.value);
       const newData = changeData(e.target.value, sourceRows);
       setSourceRows(newData);
+    };
+
+    //变更符号
+    const onChangeSign = (e: RadioChangeEvent) => {
+      setSignMark(e.target.value);
     };
 
     //如果表格更新则计算合计数据
@@ -123,19 +129,26 @@ export const LensGridEdit: FC<LensGridEditProps> = withDynamicSchemaProps(
       return (
         <div>
           <span style={{ marginRight: '10px' }}>{t('UnitType')}</span>
-          <Radio.Group onChange={onChange} value={qtyType}>
+          <Radio.Group onChange={onChangeUnit} value={qtyType}>
             <Radio style={{ marginRight: '10px' }} value={2}>{t('Prs')}</Radio>
             <Radio style={{ marginRight: '10px' }} value={1}>{t('Pcs')}</Radio>
           </Radio.Group>
+
+          <span style={{ marginRight: '10px', marginLeft: '10px' }}>{t('Type')}</span>
+          <Radio.Group onChange={onChangeSign} value={signMark}>
+            <Radio style={{ marginRight: '10px' }} value={1}>-/-</Radio>
+            <Radio style={{ marginRight: '10px' }} value={2}>+/-</Radio>
+          </Radio.Group>
+
           <span style={{ marginRight: '10px' }}>{t('QtySum')}</span>
           <span style={{ marginRight: '60px', color: 'orange', fontSize: 28 }}>{totalNum}</span>
           <Tooltip title={t('Export')}>
-            <Button type="primary" onClick={exportTable} shape="circle" icon={<FileExcelFilled />} />
+            <Button type="primary" onClick={exportTable} shape="circle" icon={<ExportOutlined />} />
           </Tooltip>
           <span style={{ marginRight: '10px' }}></span>
-          <Tooltip title={t('Paste')}>
+          {/* <Tooltip title={t('Paste')}>
             <Button type="primary" onClick={pasteText} shape="circle" icon={<FileTextFilled />} />
-          </Tooltip>
+          </Tooltip> */}
           <span style={{ marginRight: '10px' }}></span>
           <Tooltip title={t('Clear')}>
             <Button type="primary" onClick={clearTable} shape="circle" icon={<ClearOutlined />} />

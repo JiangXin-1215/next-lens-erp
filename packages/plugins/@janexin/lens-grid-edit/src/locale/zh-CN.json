@@ -10,5 +10,6 @@
     "Clear": "清空",
     "Sum": "合计",
     "ReadOnly": "只读",
-    "Collection": "数据表"
+    "Collection": "数据表",
+    "Type": "光度类型"
 }

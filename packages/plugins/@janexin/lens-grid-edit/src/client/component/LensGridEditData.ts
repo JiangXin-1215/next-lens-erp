@@ -1,3 +1,5 @@
+
+import { useCollectionManager } from '@nocobase/client';
 import { utils, writeFile } from 'xlsx';
 
 //单元格数据
@@ -135,7 +137,7 @@ export const defaultRows: LensGridRow[] = Array.from({ length: 41 }, (_, i) => (
 }));
 
 
-export const addTotalRow = (sourceRow,totalDisplay:string) => {
+export const addTotalRow = (sourceRow, totalDisplay: string) => {
   const result = sourceRow.reduce((pre, cur) => {
     return {
       id: 'total',
@@ -269,6 +271,7 @@ export const exportExcel = (sourceRows: LensGridRow[], name: string, unit: numbe
   utils.book_append_sheet(data, sheet, name);
   writeFile(data, name + '.xlsx');
 }
+
 
 
 
